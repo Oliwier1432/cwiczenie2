@@ -21,7 +21,13 @@ jobs:
         with:
           python-version: "3.12"
 
-      # 🔧 Instalacja zależności przed uruchomieniem skryptów
+      # 🔧 Cache pip and install dependencies
+      - name: Cache pip
+        uses: actions/cache@v4
+        with:
+          path: ~/.cache/pip
+          key: ${{ runner.os }}-pip-${{ hashFiles('**/requirements.txt') }}
+
       - name: Install dependencies
         run: |
           python3 -m pip install --upgrade pip
