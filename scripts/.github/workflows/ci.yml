@@ -21,6 +21,16 @@ jobs:
         with:
           python-version: "3.12"
 
+      # 🔧 Instalacja zależności przed uruchomieniem skryptów
+      - name: Install dependencies
+        run: |
+          python3 -m pip install --upgrade pip
+          if [[ -f "requirements.txt" ]]; then
+            pip install -r requirements.txt
+          else
+            pip install black
+          fi
+
       - name: Create virtualenv and install dependencies
         run: bash scripts/create_venv.sh
 
