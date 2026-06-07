@@ -3,3 +3,4 @@ line-length = 88
 
 [tool.pylint]
 max-line-length = 88
+disable = ["C0114", "C0115", "C0116"]
